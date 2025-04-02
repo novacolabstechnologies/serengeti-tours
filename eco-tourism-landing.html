@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serengeti Explorer - Sustainable Eco-Tourism</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: url('images/header.jpg') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            position: relative;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        header > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .logo span {
+            color: #8BC34A;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #8BC34A;
+        }
+        
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 200px;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            max-width: 700px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #8BC34A;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #7cb342;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .about {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .section-title .divider {
+            width: 80px;
+            height: 3px;
+            background: #8BC34A;
+            margin: 0 auto 20px;
+        }
+        
+        .section-title p {
+            color: #777;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-img {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        .safari-packages {
+            padding: 100px 0;
+            background: #f9f9f9;
+        }
+        
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .package-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .package-img {
+            position: relative;
+            height: 250px;
+        }
+        
+        .package-price {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: #8BC34A;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+        }
+        
+        .package-content {
+            padding: 30px;
+        }
+        
+        .package-content h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .package-content p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .package-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .package-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .package-features li:before {
+            content: "✓";
+            margin-right: 10px;
+            color: #8BC34A;
+            font-weight: bold;
+        }
+        
+        .testimonials {
+            padding: 100px 0;
+            background: url('images/istockphoto-958201790-612x612.jpg') center/cover fixed;
+            position: relative;
+            color: white;
+        }
+        
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        .testimonials .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonials .section-title h2,
+        .testimonials .section-title p {
+            color: white;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .client-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .client-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+            overflow: hidden;
+        }
+        
+        .client-details h4 {
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        
+        .client-details p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .cta {
+            padding: 100px 0;
+            background: #8BC34A;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 18px;
+        }
+        
+        .cta .btn {
+            background: white;
+            color: #333;
+        }
+        
+        .cta .btn:hover {
+            background: #f1f1f1;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #8BC34A;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: #8BC34A;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #8BC34A;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Serengeti<span>Explorer</span></div>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Safari Packages</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="hero">
+                <h1>Discover the Wild Beauty of Tanzania</h1>
+                <p>Experience sustainable eco-tourism in the heart of the Serengeti. Unforgettable safaris that preserve and protect Africa's natural heritage.</p>
+                <a href="#" class="btn">Book Your Safari</a>
+            </div>
+        </div>
+    </header>
+    
+    <section class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+                <div class="divider"></div>
+                <p>We're committed to providing authentic wildlife experiences while protecting Tanzania's natural treasures.</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="images/74981692007-adobe-stock-731317976.jpeg" alt="Safari Experience" style="width: 600px; height: auto;"/>
+                </div>
+                <div class="about-text">
+                    <h3>Sustainable Tourism Since 2010</h3>
+                    <p>Founded by native Tanzanians with a passion for conservation, Serengeti Explorer has been at the forefront of sustainable eco-tourism for over 15 years. Our mission is to showcase the breathtaking beauty of Tanzania's wilderness while ensuring its preservation for generations to come.</p>
+                    <p>We employ local guides, support community initiatives, and donate a portion of every booking to conservation efforts. When you travel with us, you're not just witnessing nature's wonders – you're helping protect them.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="safari-packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Safari Packages</h2>
+                <div class="divider"></div>
+                <p>Explore our range of carefully crafted safari experiences that showcase the best of Tanzania's wildlife and landscapes.</p>
+            </div>
+            
+            <div class="package-grid">
+                <div class="package-card">
+                    <div class="package-img">
+                        <img src="images/751c5710a1498c7fa13e54ee9affbd6d.jpg" alt="Classic Safari" style="width: 400px; height: auto;" />
+                        <div class="package-price">From $1,899</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Classic Serengeti Safari</h3>
+                        <p>Our most popular 5-day safari through the iconic plains of the Serengeti National Park.</p>
+                        <ul class="package-features">
+                            <li>Game drives in custom 4x4 vehicles</li>
+                            <li>Luxury eco-lodge accommodation</li>
+                            <li>Expert local guides</li>
+                            <li>All meals and transfers included</li>
+                        </ul>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="package-card">
+                    <div class="package-img">
+                        <img src="images/istockphoto-958201790-612x612.jpg" alt="Migration Safari" style="width: 400px; height: auto;" />
+                        <div class="package-price">From $2,499</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Great Migration Safari</h3>
+                        <p>Witness the spectacular wildebeest migration in this 7-day adventure across Tanzania.</p>
+                        <ul class="package-features">
+                            <li>Follow the migration route</li>
+                            <li>Luxury tented camps</li>
+                            <li>Hot air balloon option</li>
+                            <li>Photography specialist guide</li>
+                        </ul>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="package-card">
+                    <div class="package-img">
+                        <img src="images/istockphoto-958201790-612x612.jpg" alt="Migration Safari" style="width: 400px; height: auto;" />
+                        <div class="package-price">From $2,499</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Great Migration Safari</h3>
+                        <p>Witness the spectacular wildebeest migration in this 7-day adventure across Tanzania.</p>
+                        <ul class="package-features">
+                            <li>Follow the migration route</li>
+                            <li>Luxury tented camps</li>
+                            <li>Hot air balloon option</li>
+                            <li>Photography specialist guide</li>
+                        </ul>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <footer>
+                    <div class="footer-bottom">
+                        <p>&copy; 2025 Safari Motors | All rights reserved</p>
+                        <div class="created-by">
+                            <p>Created by <a href="https://NovaCoLabs.com" target="_blank">NovaCoLabs</a></p>
+                        </div>
+                    </div>
+
+                </footer>
+            </body>
+            </html>
